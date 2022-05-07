@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             u.followed = false;
         }
 
+        //OnCLick for Follow button
         f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,12 +51,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //Appending random number
         Intent i = getIntent();
 
         String message = i.getStringExtra("newText");
+        name.setText(message);
 
-        TextView uName = findViewById(R.id.username);
-        uName.setText(message);
+        //OnClick for Message button
+        Button msgButton = findViewById(R.id.message);
+        msgButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToMessage = new Intent(MainActivity.this, MessageGroup.class);
+                startActivity(goToMessage);
+            }
+        });
+
     }
 
 
